@@ -36,3 +36,42 @@ if(word === reverse_word) {
 }else {
     console.log(word + ' is NOT a palindrome');
 }
+
+// ------------------------------------------------
+
+// How to create a stack
+
+var Stack = function() {
+
+    this.count = 0;
+    this.storage = {};
+
+    // Add a value to the top of the stack
+    this.push = function(value) {
+        this.storage[this.count] = value;
+        this.count++;
+    }
+
+    // Remove and return the value at the end of the stack
+    this.pop = function() {
+        if(this.count == 0) {
+            return undefined;
+        }
+
+        this.count--;
+        var result = this.storage[this.count];
+        delete this.storage[this.count];
+        return result;
+    }
+
+    // Get the size of the stack
+    this.size = function() {
+        return this.count;
+    }
+
+    // Return the value at the end of the stack
+    this.peek = function() {
+        return this.storage[this.count - 1];
+    }
+
+}
